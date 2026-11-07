@@ -195,7 +195,7 @@ in
 
   };
   
-   wayland.windowManager.niri.enable = true;
+  # wayland.windowManager.niri.enable = true;
 #  xdg.portal = {
 #       enable = true;
 #       extraPortals = with pkgs; [
