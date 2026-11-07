@@ -300,7 +300,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-//spawn-at-startup "waybar"
+spawn-at-startup "waybar"
 //spawn-at-startup "mako"
 //spawn-at-startup "fcitx5" "-d"
 //spawn-at-startup "/usr/libexec/lxqt-policykit-agent"

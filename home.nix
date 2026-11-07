@@ -337,7 +337,7 @@ in
     joplin-desktop.enable = true;
     waybar = {
       enable = true;
-      systemd.enable = true;
+      #systemd.enable = true;
     };
 
     yt-dlp = {
