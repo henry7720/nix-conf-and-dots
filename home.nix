@@ -11,7 +11,7 @@ in
 
  # targets.genericLinux = {
  #   enable = true;
- #   gpu.enable = true;
+o#   gpu.enable = true;
  # };
 
    i18n.inputMethod = {
@@ -322,12 +322,6 @@ in
       };
     };
 
-    thunar = {
-      enable = true;
-      plugins = with pkgs; [
-        thunar-volman
-      ];
-    };
     # Let Home Manager install and manage itself.
     bash = {
       enable = true;
@@ -337,12 +331,6 @@ in
       };
 
       initExtra = ''export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "'';
-      bashrcExtra = ''
-        # Source global definitions
-        if [ -f /etc/bashrc ]; then
-            . /etc/bashrc
-        fi
-      '';
     };
 
     obs-studio.enable = true;
