@@ -73,6 +73,11 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+# for system integration:
+ environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
