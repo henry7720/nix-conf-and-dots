@@ -11,7 +11,7 @@ in
 
  # targets.genericLinux = {
  #   enable = true;
-o#   gpu.enable = true;
+#   gpu.enable = true;
  # };
 
    i18n.inputMethod = {
