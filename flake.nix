@@ -7,9 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, impermanence, ... }@inputs: {
     nixosConfigurations = {
       # Matches networking.hostName = "nixos" in configuration.nix
       nixos-yoga = nixpkgs.lib.nixosSystem {
