@@ -35,7 +35,7 @@ in
         # The home.packages option allows you to install Nix packages into your
   # environment.
       packages = with pkgs; [
-        chromium
+        ungoogled-chromium
         nerd-fonts.jetbrains-mono
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
