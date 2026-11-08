@@ -11,11 +11,18 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+	configurationLimit = 20;
+      };
+      efi.canTouchEfiVariables = true;
+    };
+    
+    # Use latest kernel
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   networking.hostName = "nixos-yoga"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -24,49 +31,57 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    
+  };
   # Enable networking
   networking.networkmanager.enable = true;
   # Set your time zone.
   time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  
-  i18n.extraLocales = [
-    "en_US.UTF-8/UTF-8"
-    "zh_TW.UTF-8/UTF-8"
-    "zh_CN.UTF-8/UTF-8"
-  ];
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-  
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      qt6Packages.fcitx5-chinese-addons
-      fcitx5-gtk
-      qt6Packages.fcitx5-qt
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocales = [
+      "en_US.UTF-8/UTF-8"
+      "zh_TW.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
     ];
-  };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
+  
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          qt6Packages.fcitx5-chinese-addons
+          fcitx5-gtk
+          qt6Packages.fcitx5-qt
+        ];
+      };
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -128,11 +143,17 @@
       enable = true;
       ppdSupport = true;
     };
+
     gvfs.enable = true;
+    
     udisks2.enable = true;
+    
     flatpak.enable = true;
+    
     upower.enable = true;
+    
     tailscale.enable = true;
+    
     ipp-usb.enable = true;
     #sudo firintd-enroll henry
     fprintd.enable = true;  
@@ -144,8 +165,16 @@
     };
 
     printing = {
-      drivers = with pkgs; [ cups-filters];
+      drivers = with pkgs; [
+        cups-filters
+      ];
       enable = true;
+    };
+    
+    # Configure keyboard map in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
     };
 
     pulseaudio.enable = false;
@@ -167,27 +196,21 @@
     };
   };
   
-# for system integration:
-  environment = {
-    pathsToLink = [
-       "/share/applications"
-       "/share/xdg-desktop-portal"
-    ];
-  };
-
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
+  environment = {
+    systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
-    brightnessctl
-    playerctl
-    swaylock
-  ];
+      brightnessctl
+      playerctl
+      swaylock
+      ntfs3g
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
