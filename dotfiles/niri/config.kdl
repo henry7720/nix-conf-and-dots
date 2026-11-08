@@ -127,7 +127,7 @@ output "DP-2" {
 // Sceptre
 output "HDMI-A-1" {
     mode "1920x1080@74.973"
-    // variable-refresh-rate
+    //variable-refresh-rate
     transform "normal"
     scale 1.05
     position x=0 y=0
@@ -499,8 +499,8 @@ binds {
     //Mod+Super_R repeat=false { spawn-sh "pkill fuzzel || exec fuzzel"; }
 
     Mod+Z repeat=false hotkey-overlay-title="Run an Application: Firefox" { spawn "firefox"; }
-    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-f" "--scaling" "fill" "-i" "/var/home/henry/.config/niri/Chicago.jpg"; }
-    Super+Alt+S repeat=false hotkey-overlay-title="Lock and Suspend" { spawn-sh "swaylock -f --scaling fill -i /var/home/henry/.config/niri/Chicago.jpg && systemctl suspend"; }
+    Super+Alt+L repeat=false hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-f" "--scaling" "fill" "-i" "/home/henry/.config/niri/Chicago.jpg"; }
+    Super+Alt+S repeat=false hotkey-overlay-title="Lock and Suspend" { spawn-sh "swaylock -f --scaling fill -i /home/henry/.config/niri/Chicago.jpg && systemctl suspend"; }
     Super+Alt+W repeat=false hotkey-overlay-title="Toggle waybar" { spawn-sh "pkill -USR1 waybar || exec waybar"; } 
     Super+Alt+B repeat=false cooldown-ms=1000 hotkey-overlay-title="Restart waybar" { spawn-sh "pkill -9 waybar; exec waybar"; }
     //Super+Alt+P repeat=false cooldown-ms=1000 hotkey-overlay-title="Restart lxqt-policykit" { spawn-sh "killall -9 -q -w lxqt-policykit-agent; exec /usr/libexec/lxqt-policykit-agent"; }

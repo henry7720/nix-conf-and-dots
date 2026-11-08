@@ -76,7 +76,7 @@
     extraGroups = [ "networkmanager" "wheel" "cdrom" "libvirtd" ];
     # packages = with pkgs; [];
   };
-
+  
   programs = {
     niri = {
       enable = true;
@@ -102,8 +102,17 @@
     };
   };
   
-  security.rtkit.enable = true;
-  
+  security = {
+    rtkit.enable = true;
+    pam.services = {
+      login.fprintAuth = true;
+      swaylock = {
+        fprintAuth = true;
+	unixAuth = true;
+      };
+    };
+  };
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
@@ -125,6 +134,7 @@
     upower.enable = true;
     tailscale.enable = true;
     ipp-usb.enable = true;
+    fprintd.enable = true;  
     
     avahi = {
       enable = true;
