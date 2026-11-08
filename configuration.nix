@@ -119,6 +119,7 @@
     };
 
     virt-manager.enable = true;
+    k3b.enable = true;
   };
 
   virtualisation = {
@@ -165,7 +166,8 @@
         };
       };
     };
-
+    
+    #udev.packages = with pkgs; [ brightnessctl ]; 
     gvfs.enable = true;
     
     udisks2.enable = true;
@@ -179,7 +181,7 @@
     ipp-usb.enable = true;
     #sudo firintd-enroll henry
     fprintd.enable = true;  
-    
+
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -220,7 +222,12 @@
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
+  
+  environment = {
+    systemPackages = with pkgs; [
+      brightnessctl
+    ];
+  };
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   # environment = {

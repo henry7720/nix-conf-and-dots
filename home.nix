@@ -8,7 +8,20 @@ let
   scriptsDir = "${config.home.homeDirectory}/Documents/Scripts";
 in
 {
-  services.hyprpolkitagent.enable = true;
+  services = {
+    hyprpolkitagent.enable = true;
+    flatpak = {
+      enable = true; # This activates the nix-flatpak module for your user
+
+      # Automatically remove flatpaks from your user environment that are not listed here
+      uninstallUnmanaged = true;
+
+      packages = [
+        #"md.obsidian.Obsidian"
+      ];
+    };
+  };
+
   home = {
 
     # Home Manager needs a bit of information about you and the paths it should
@@ -36,15 +49,15 @@ in
   # environment.
       packages = with pkgs; [
         ungoogled-chromium
-	brightnessctl
-        playerctl
+	playerctl
         swaylock
         xarchiver
         bluetui
         wiremix
         swaybg
         wl-clipboard
-	xwayland-satellite
+	jq
+        xwayland-satellite
         kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
