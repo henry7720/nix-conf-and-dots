@@ -80,6 +80,7 @@
   programs = {
     niri = {
       enable = true;
+      useNautilus = false;
     };
         
     thunar = {
