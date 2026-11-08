@@ -34,10 +34,8 @@ in
 
         # The home.packages option allows you to install Nix packages into your
   # environment.
-
       packages = with pkgs; [
         chromium
-        firefox
         nerd-fonts.jetbrains-mono
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
@@ -194,25 +192,74 @@ in
 #        };
 #      };
 #    };
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      sansSerif = [ "Noto Sans" "Noto Sans CJK TC" "Noto Sans CJK SC" "Jigmo" ];
+      serif = [ "Noto Serif" "Noto Serif CJK TC" "Noto Serif CJK SC" "Jigmo" ];
+      monospace = [ "JetBrainsMonoNL Nerd Font" "Noto Sans Mono CJK TC" "Jigmo" ];
+    };
+  };
+  
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Breeze-Dark";
+      package = pkgs.kdePackages.breeze-gtk;
+    };
+    iconTheme = {
+      name = "oxygen";
+      package = pkgs.kdePackages.oxygen-icons;
+    };
+    font = {
+      name = "Noto Sans";
+      size = 10;
+    };
+    gtk3 = {
+      bookmarks = [
+        "file:///home/henry/Documents"
+        "file:///home/henry/Documents/tOSU/CDME"
+        "file:///home/henry/Documents/tOSU"
+        "file:///home/henry/Pictures/Screenshots"
+        "file:///home/henry/Downloads"
+      ];
+      extraConfig = {
+        gtk-application-prefer-dark-theme = true;
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintslight";
+      };
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+  };
 
+  # Only need the remaining non-GTK keys in dconf now:
+  dconf.settings."org/gnome/desktop/interface" = {
+    document-font-name = "Noto Sans 10";
+    monospace-font-name = "JetBrainsMonoNL Nerd Font 12";
+    font-antialiasing = "grayscale";
+    font-hinting = "slight";
+  };
 
   xdg.configFile = {
     #"mako/config".source = dotfiles/mako/config;
     "waybar/config.jsonc".source = dotfiles/waybar/config.jsonc;
     "waybar/style.css".source = dotfiles/waybar/style.css;
 
-    "xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
-      source = dotfiles/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
-      force = true;
-    };
-    "xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml" = {
-      source = dotfiles/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml;
-      force = true;
-    };
-    "gtk-3.0/bookmarks".source = dotfiles/gtk-3.0/bookmarks;
-    "gtk-3.0/settings.ini".source = dotfiles/gtk-3.0/settings.ini;
-    "gtk-4.0/bookmarks".source = dotfiles/gtk-3.0/bookmarks;
-    "gtk-4.0/settings.ini".source = dotfiles/gtk-3.0/settings.ini;
+    #"xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
+    #  source = dotfiles/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
+    #  force = true;
+    #};
+    #"xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml" = {
+    #  source = dotfiles/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml;
+    #  force = true;
+    # };
+    #"gtk-3.0/bookmarks".source = dotfiles/gtk-3.0/bookmarks;
+    #"gtk-3.0/settings.ini".source = dotfiles/gtk-3.0/settings.ini;
+    #"gtk-4.0/bookmarks".source = dotfiles/gtk-3.0/bookmarks;
+    #"gtk-4.0/settings.ini".source = dotfiles/gtk-3.0/settings.ini;
     #"yt-dlp/config".source = dotfiles/yt-dlp/config;
     #"kdeglobals".source = dotfiles/kdeglobals;
 
@@ -261,16 +308,22 @@ in
    };
   };
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      font-name = "Noto Sans 10";
-      document-font-name = "Noto Sans 10";
-      monospace-font-name = "JetBrainsMonoNL Nerd Font 12";
-      font-antialiasing = "grayscale";
-      font-hinting = "slight";
-      color-scheme = "prefer-dark";
-      gtk-theme = "Breeze-Dark";
-      icon-theme = "oxygen";
+  xfconf.settings = {
+    thunar = {
+      "last-view" = "ThunarDetailsView";
+      "last-show-hidden" = true;
+      "misc-single-click" = false;
+      "misc-use-csd" = false;
+      "misc-text-beside-icons" = false;
+      "misc-symbolic-icons-in-sidepane" = false;
+      "misc-date-style" = "THUNAR_DATE_STYLE_LONG";
+      "misc-full-path-in-tab-title" = false;
+      "misc-confirm-move-to-trash" = true;
+      "misc-window-title-style" = "THUNAR_WINDOW_TITLE_STYLE_FULL_PATH_WITH_THUNAR_SUFFIX";
+      "hidden-bookmarks" = [ "network:///" ];
+    };
+    thunar-volman = {
+      "automount-drives/enabled" = true;
     };
   };
 
@@ -375,6 +428,16 @@ in
         border = {
          width=2;
          radius=0;
+        };
+      };
+    };
+    firefox = {
+      enable = true;
+      profiles.default = {
+        isDefault = true;
+	path = "lr2w8zpp.default";
+        settings = {
+          "browser.urlbar.trimURLs" = false;
         };
       };
     };
