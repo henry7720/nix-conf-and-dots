@@ -89,6 +89,7 @@ in
         kdePackages.kate
         qbittorrent
         virt-manager
+	libayatana-appindicator
         mkvtoolnix
         vlc
         audacious
@@ -116,7 +117,7 @@ in
         jdk               # jdk-openjdk
 
         # Media & Utilities
-        ffmpeg
+        ffmpeg-full
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello

@@ -28,7 +28,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -89,11 +88,26 @@
         dockerCompat = true;
     };
   };
+  
+  security.rtkit.enable = true;
 
   services = {
     gvfs.enable = true;
     udisks2.enable = true;
     flatpak.enable = true;
+    printing.enable = true;
+
+    pulseaudio.enable = false;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      #alsa.support32Bit = true;
+      pulse.enable = true;
+
+      #if you want JACK apps, uncomment
+      #jack.enable = true;
+    };
   };
   
 # for system integration:
