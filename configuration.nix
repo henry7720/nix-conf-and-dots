@@ -94,7 +94,7 @@
     gvfs.enable = true;
     udisks2.enable = true;
     flatpak.enable = true;
-  }
+  };
   
 # for system integration:
  environment.pathsToLink = [
