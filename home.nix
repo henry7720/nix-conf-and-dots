@@ -8,25 +8,7 @@ let
   scriptsDir = "${config.home.homeDirectory}/Documents/Scripts";
 in
 {
-
- # targets.genericLinux = {
- #   enable = true;
-#   gpu.enable = true;
- # };
-
-   i18n.inputMethod = {
-     type = "fcitx5";
-     enable = true;
-     fcitx5.waylandFrontend = true;
-   fcitx5.addons = with pkgs; [
-      qt6Packages.fcitx5-chinese-addons
-     fcitx5-gtk
-       qt6Packages.fcitx5-qt
-     ];
-   };
-
   services.hyprpolkitagent.enable = true;
-
   home = {
 
     # Home Manager needs a bit of information about you and the paths it should
@@ -158,12 +140,12 @@ in
       #".bashrc".source = dotfiles/bash/.bashrc;
       #".bash_profile".source = dotfiles/bash/.bash_profile;
       #".gitconfig".source = dotfiles/git/.gitconfig;
-      ".local/bin/update-all".source = symlink "${scriptsDir}/update-system-all.sh";
-      ".local/bin/proc_zh".source = symlink "${scriptsDir}/process_zhongwen_export.py";
-      ".local/bin/restart_shell".source = symlink "${scriptsDir}/restart-plasmashell.sh";
-      ".local/bin/backup-remote".source = symlink "${scriptsDir}/backup-remote.sh";
-      ".local/bin/build-os".source = symlink "${scriptsDir}/rebuild-system-bootc.sh";
-      ".local/bin/check-reg".source = symlink "${scriptsDir}/check-bootc-base-image-update.sh";
+      #".local/bin/update-all".source = symlink "${scriptsDir}/update-system-all.sh";
+      #".local/bin/proc_zh".source = symlink "${scriptsDir}/process_zhongwen_export.py";
+      #".local/bin/restart_shell".source = symlink "${scriptsDir}/restart-plasmashell.sh";
+      #".local/bin/backup-remote".source = symlink "${scriptsDir}/backup-remote.sh";
+      #".local/bin/build-os".source = symlink "${scriptsDir}/rebuild-system-bootc.sh";
+      #".local/bin/check-reg".source = symlink "${scriptsDir}/check-bootc-base-image-update.sh";
 
       "Documents/Personal/FAMILY MEDIA ARCHIVE".source = symlink "/run/media/henry/Diff_Backups/FAMILY MEDIA ARCHIVE";
     };
@@ -172,7 +154,6 @@ in
       EDITOR = "nano";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       PODMAN_COMPOSE_WARNING_LOGS = "false";
-      XMODIFIERS = "@im=fcitx";
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

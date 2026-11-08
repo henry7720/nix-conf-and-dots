@@ -51,6 +51,17 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+  
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      qt6Packages.fcitx5-chinese-addons
+      fcitx5-gtk
+      qt6Packages.fcitx5-qt
+    ];
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -70,7 +81,7 @@
     niri = {
       enable = true;
     };
-
+        
     thunar = {
       enable = true;
       plugins = with pkgs; [
@@ -78,24 +89,53 @@
 	thunar-volman
       ];
     };
+
+    virt-manager.enable = true;
   };
 
   virtualisation = {
     libvirtd.enable = true;
 
     podman = {
-        enable = true;
-        dockerCompat = true;
+      enable = true;
+      dockerCompat = true;
     };
   };
   
   security.rtkit.enable = true;
+  
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+  
+  systemd = {
+    services.NetworkManager-wait-online.enable = false;
+    oomd.enable = true;
+  };
 
   services = {
+    tuned = {
+      enable = true;
+      ppdSupport = true;
+    };
     gvfs.enable = true;
     udisks2.enable = true;
     flatpak.enable = true;
-    printing.enable = true;
+    upower.enable = true;
+    tailscale.enable = true;
+    ipp-usb.enable = true;
+    
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    printing = {
+      drivers = with pkgs; [ cups-filters];
+      enable = true;
+    };
 
     pulseaudio.enable = false;
 
@@ -107,6 +147,12 @@
 
       #if you want JACK apps, uncomment
       #jack.enable = true;
+    };
+
+    btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [ "/" ];
     };
   };
   
@@ -124,10 +170,12 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  # environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
-  # ];
+    brightnessctl
+    swaylock
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
