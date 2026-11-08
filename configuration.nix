@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -16,7 +16,7 @@
       systemd-boot = {
         enable = true;
 	configurationLimit = 20;
-      };
+     };
       efi.canTouchEfiVariables = true;
     };
     
@@ -103,7 +103,22 @@
     extraGroups = [ "networkmanager" "wheel" "cdrom" "libvirtd" ];
     # packages = with pkgs; [];
   };
-  
+ 
+  # OVERRIDE THE DEFAULTS FOR NIRI PROGRAM
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+      oo7-portal
+    ];
+    config.niri = lib.mkForce {
+        default = [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Secret" = [ "oo7-portal" ];
+    };
+  };
+
   programs = {
     niri = {
       enable = true;
@@ -134,6 +149,7 @@
   security = {
     rtkit.enable = true;
     pam.services = {
+      login.oo7.enable = true;
       login.fprintAuth = true;
       greetd.fprintAuth = true;
       swaylock.fprintAuth = true;
@@ -149,7 +165,7 @@
     services.NetworkManager-wait-online.enable = false;
     oomd.enable = true;
   };
-
+  
   services = {
     tuned = {
       enable = true;
@@ -166,10 +182,15 @@
         };
       };
     };
-    
+   
+    # override niri default
+    gnome.gnome-keyring.enable = lib.mkForce false;
+
     #udev.packages = with pkgs; [ brightnessctl ]; 
     gvfs.enable = true;
-    
+
+    oo7.enable = true;
+
     udisks2.enable = true;
     
     flatpak.enable = true;

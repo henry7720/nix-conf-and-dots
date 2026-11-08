@@ -49,14 +49,14 @@ in
   # environment.
       packages = with pkgs; [
         ungoogled-chromium
-	playerctl
+        playerctl
         swaylock
         xarchiver
         bluetui
         wiremix
         swaybg
         wl-clipboard
-	jq
+        jq
         xwayland-satellite
         kdePackages.oxygen-icons
         kdePackages.breeze-gtk
