@@ -15,6 +15,10 @@ in
 
       # Automatically remove flatpaks from your user environment that are not listed here
       uninstallUnmanaged = true;
+      update.auto = {
+        enable = true;
+        onCalendar = "weekly"; # systemd timer format
+      };
 
       packages = [
         #"md.obsidian.Obsidian"
@@ -61,6 +65,7 @@ in
         kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
+	kdePackages.breeze.qt5
         kdePackages.isoimagewriter
         kdePackages.gwenview
         kdePackages.okular
@@ -305,6 +310,7 @@ in
           force_raster_widgets=1;
       };
    };
+   qt5ctSettings = config.qt.qt6ctSettings;
   };
 
   xfconf.settings = {
@@ -361,7 +367,9 @@ in
       enable = true;
       
       shellAliases = {
-        vim = "nvim";
+        vi = "nvim";
+	vim = "nvim";
+	rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
       };
 
       initExtra = ''export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "'';
