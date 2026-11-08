@@ -34,6 +34,12 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  
+  i18n.extraLocales = [
+    "en_US.UTF-8/UTF-8"
+    "zh_TW.UTF-8/UTF-8"
+    "zh_CN.UTF-8/UTF-8"
+  ];
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -57,8 +63,8 @@
   users.users."henry" = {
     isNormalUser = true;
     description = "Henry";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "cdrom" "libvirtd" ];
+    # packages = with pkgs; [];
   };
 
   programs = {
@@ -74,9 +80,22 @@
       ];
     };
   };
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
 
+  virtualisation = {
+    libvirtd.enable = true;
+
+    podman = {
+        enable = true;
+        dockerCompat = true;
+    };
+  };
+
+  services = {
+    gvfs.enable = true;
+    udisks2.enable = true;
+    flatpak.enable = true;
+  }
+  
 # for system integration:
  environment.pathsToLink = [
     "/share/applications"
