@@ -45,7 +45,10 @@
     
   };
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    nftables.enable = true;
+  };
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -83,6 +86,15 @@
       };
     };
   };
+  
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    arphic-ukai
+    arphic-uming
+    jigmo
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."henry" = {
@@ -122,9 +134,8 @@
     rtkit.enable = true;
     pam.services = {
       login.fprintAuth = true;
-      swaylock = {
-        fprintAuth = true;
-      };
+      greetd.fprintAuth = true;
+      swaylock.fprintAuth = true;
     };
   };
 
@@ -142,6 +153,17 @@
     tuned = {
       enable = true;
       ppdSupport = true;
+    };
+    
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          # Launches tuigreet, shows the time, and sets Niri as the default command
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+          user = "greeter";
+        };
+      };
     };
 
     gvfs.enable = true;
@@ -201,16 +223,16 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment = {
-    systemPackages = with pkgs; [
+  # environment = {
+  #   systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #   wget
-      brightnessctl
-      playerctl
-      swaylock
-      ntfs3g
-    ];
-  };
+  #    brightnessctl
+  #    playerctl
+  #    swaylock
+  #    ntfs3g
+  #  ];
+  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

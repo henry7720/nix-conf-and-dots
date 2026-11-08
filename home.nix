@@ -36,12 +36,9 @@ in
   # environment.
       packages = with pkgs; [
         ungoogled-chromium
-        nerd-fonts.jetbrains-mono
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        arphic-ukai
-        arphic-uming
-        jigmo
+	brightnessctl
+        playerctl
+        swaylock
         xarchiver
         bluetui
         wiremix
@@ -80,20 +77,20 @@ in
         neovim
 
         # Compilers & Toolchains
-        gcc
-        gnumake           # make
+        #gcc
+        #gnumake           # make
         #clang
-        llvm
-        gdb
-        valgrind
-        rustc
-        cargo             # rust ecosystem
+        #llvm
+        #gdb
+        #valgrind
+        #rustc
+        #cargo             # rust ecosystem
 
         # Runtimes & Languages
-        python3
-        uv
-        nodejs            # includes npm in nixpkgs
-        jdk               # jdk-openjdk
+        #python3
+        #uv
+        #nodejs            # includes npm in nixpkgs
+        #jdk               # jdk-openjdk
 
         # Media & Utilities
         ffmpeg-full
