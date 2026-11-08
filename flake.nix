@@ -4,9 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak?ref=latest";
-    };
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,14 +24,13 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-	      useGlobalPkgs = true;
-	      backupFileExtension = "backup";
+              useGlobalPkgs = true;
+              backupFileExtension = "backup";
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.henry = ./home.nix;
-	      
-	      sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-	    };
+              sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
+            };
           }
         ];
       };

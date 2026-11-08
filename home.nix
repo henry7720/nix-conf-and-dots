@@ -65,7 +65,7 @@ in
         kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
-	kdePackages.breeze.qt5
+        kdePackages.breeze.qt5
         kdePackages.isoimagewriter
         kdePackages.gwenview
         kdePackages.okular
