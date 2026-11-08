@@ -108,7 +108,6 @@
       login.fprintAuth = true;
       swaylock = {
         fprintAuth = true;
-	unixAuth = true;
       };
     };
   };
@@ -134,6 +133,7 @@
     upower.enable = true;
     tailscale.enable = true;
     ipp-usb.enable = true;
+    #sudo firintd-enroll henry
     fprintd.enable = true;  
     
     avahi = {
