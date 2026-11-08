@@ -116,37 +116,6 @@
        "/share/applications"
        "/share/xdg-desktop-portal"
     ];
-
-    persistence."/persist" = {
-      hideMounts = true;
-      directories = [
-        "/var"
-        "/etc"
-        "/home/henry"
-      ];
-
-#       files = [
-#         "/root/.config/sops/age/keys.txt"
-#         "/etc/machine-id"
-#         {
-#           file = "/etc/ssh/ssh_host_ed25519_key";
-#           parentDirectory = {
-#             mode = "0700";
-#           };
-#         }
-#         {
-#           file = "/etc/ssh/ssh_host_ed25519_key.pub";
-#           parentDirectory = {
-#             mode = "0755";
-#           };
-#         }
-#       ];
-    };
-
-    #users.henry = {
-    #  directories = [];
-    #  files = [];
-    #};
   };
 
 
