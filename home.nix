@@ -47,6 +47,7 @@ in
         wiremix
         swaybg
         wl-clipboard
+	xwayland-satellite
         kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
@@ -68,8 +69,6 @@ in
         kdePackages.kdenlive
         kdePackages.kate
         qbittorrent
-        virt-manager
-	libayatana-appindicator
         mkvtoolnix
         vlc
         audacious
