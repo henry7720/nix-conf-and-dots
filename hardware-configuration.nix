@@ -24,7 +24,6 @@
     { device = "/dev/mapper/luks-41e666ac-09ec-4832-882d-24a07775230a";
       fsType = "btrfs";
       options = [ "subvol=home" ];
-      neededForBoot = true;
     };
 
   fileSystems."/nix" =
