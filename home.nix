@@ -192,24 +192,22 @@ in
 #        };
 #      };
 #    };
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      sansSerif = [ "Noto Sans" "Noto Sans CJK TC" "Noto Sans CJK SC" "Jigmo" ];
-      serif = [ "Noto Serif" "Noto Serif CJK TC" "Noto Serif CJK SC" "Jigmo" ];
-      monospace = [ "JetBrainsMonoNL Nerd Font" "Noto Sans Mono CJK TC" "Jigmo" ];
-    };
-  };
+#   fonts.fontconfig = {
+#     enable = true;
+#     defaultFonts = {
+#       sansSerif = [ "Noto Sans" "Noto Sans CJK TC" "Noto Sans CJK SC" "Jigmo" ];
+#       serif = [ "Noto Serif" "Noto Serif CJK TC" "Noto Serif CJK SC" "Jigmo" ];
+#       monospace = [ "JetBrainsMonoNL Nerd Font" "Noto Sans Mono CJK TC" "Jigmo" ];
+#     };
+#   };
   
   gtk = {
     enable = true;
     theme = {
       name = "Breeze-Dark";
-      package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
       name = "oxygen";
-      package = pkgs.kdePackages.oxygen-icons;
     };
     font = {
       name = "Noto Sans";
@@ -223,15 +221,6 @@ in
         "file:///home/henry/Pictures/Screenshots"
         "file:///home/henry/Downloads"
       ];
-      extraConfig = {
-        gtk-application-prefer-dark-theme = true;
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-      };
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
     };
   };
 
@@ -241,6 +230,7 @@ in
     monospace-font-name = "JetBrainsMonoNL Nerd Font 12";
     font-antialiasing = "grayscale";
     font-hinting = "slight";
+    color-scheme = "prefer-dark";
   };
 
   xdg.configFile = {
