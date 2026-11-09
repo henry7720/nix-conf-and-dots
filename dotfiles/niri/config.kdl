@@ -36,7 +36,7 @@ input {
         drag false
         // drag-lock
         click-method "clickfinger"
-	natural-scroll
+        natural-scroll
         scroll-factor 0.38
         accel-speed 0.2
         // accel-profile "flat"
