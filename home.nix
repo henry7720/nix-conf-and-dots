@@ -265,7 +265,7 @@ in
     #"gtk-4.0/settings.ini".source = dotfiles/gtk-3.0/settings.ini;
     #"yt-dlp/config".source = dotfiles/yt-dlp/config;
     #"kdeglobals".source = dotfiles/kdeglobals;
-
+    "xdg-terminals.list".text = ''kitty.desktop'';
     "kdeglobals" = {
     force = true;
     text = builtins.readFile "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors" + ''
