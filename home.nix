@@ -169,8 +169,8 @@ in
        package = pkgs.adwaita-icon-theme;
        name = "Adwaita";
        size = 24;
-       gtk.enable = true;
-       x11.enable = true;
+       #gtk.enable = true;
+       #x11.enable = true;
      };
         # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
