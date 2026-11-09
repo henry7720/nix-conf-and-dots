@@ -93,6 +93,7 @@ in
         distrobox
         micro
         neovim
+        fastfetch
 
         # Compilers & Toolchains
         #gcc
