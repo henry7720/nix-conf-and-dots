@@ -46,7 +46,7 @@ in
               QT_QPA_PLATFORMTHEME = "kde";
               QT_STYLE_OVERRIDE = "Breeze";
               # Allows Flatpaks to find your Nix-packaged Oxygen icons and Breeze themes
-              XDG_DATA_DIRS = "${pkgs.kdePackages.oxygen-icons}/share:${pkgs.kdePackages.breeze-gtk}/share:/run/host/user-share:/run/host/share";
+              #XDG_DATA_DIRS = "${pkgs.kdePackages.oxygen-icons}/share:${pkgs.kdePackages.breeze-gtk}/share:/run/host/user-share:/run/host/share";
             };
           };
         };
