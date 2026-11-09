@@ -116,21 +116,7 @@
     extraGroups = [ "networkmanager" "wheel" "cdrom" "libvirtd" ];
     # packages = with pkgs; [];
   };
- 
-  # OVERRIDE THE DEFAULTS FOR NIRI PROGRAM
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-      oo7-portal
-    ];
-    config.niri = lib.mkForce {
-        default = [ "gtk" ];
-        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
-        "org.freedesktop.impl.portal.Secret" = [ "oo7-portal" ];
-    };
-  };
+
 
   programs = {
     niri = {
@@ -160,15 +146,8 @@
     };
   };
   
-  security = {
-    rtkit.enable = true;
-    pam.services = {
-      login.oo7.enable = true;
-
-      # this works
-      swaylock = {};
-    };
-  };
+  security.rtkit.enable = true;
+    #pam.services.swaylock = {};
 
   hardware.bluetooth = {
     enable = true;
@@ -210,14 +189,11 @@
         };
       };
     };
-   
-    # override niri default
-    gnome.gnome-keyring.enable = lib.mkForce false;
 
-    #udev.packages = with pkgs; [ brightnessctl ]; 
+    # match niri's default
+    gnome.gnome-keyring.enable = true;
+
     gvfs.enable = true;
-
-    oo7.enable = true;
 
     udisks2.enable = true;
     
