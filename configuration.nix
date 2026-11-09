@@ -23,9 +23,18 @@
     
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # LOAD GPU DRIVER HOPEFULLY CLEANER
+    initrd.kernelModules = [ "amdgpu" ];
     # ENSURE THAT WE CAN SET CONSERVATION MODE ON EVERY BOOT
     kernelModules = [ "ideapad_laptop" ];
- };
+  };
+
+  console = {
+    packages = with pkgs; [ spleen ];
+    font = "spleen-12x24";
+    earlySetup = true;
+  };
 
   networking.hostName = "nixos-yoga"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
