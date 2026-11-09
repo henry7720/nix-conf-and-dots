@@ -219,7 +219,7 @@ in
     enable = true;
     theme = {
       name = "Breeze-Dark";
-      package = kdePackages.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
       name = "oxygen";
