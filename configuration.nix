@@ -173,7 +173,8 @@
           Type = "oneshot";
           RemainAfterExit = true;
         };
-        script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode";
+	# In previous revisions, the wildcard * was VPC2004:00 (identified via research), but this may not be stable on kernel updates, so we write * to be safe
+        script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode";
       };
 
       NetworkManager-wait-online.enable = false;
