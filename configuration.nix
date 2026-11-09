@@ -163,8 +163,7 @@
   security = {
     rtkit.enable = true;
     pam.services = {
-      login.oo7.enable = true;
-      greetd = {
+      login = {
         oo7.enable = true;
         fprintAuth = false;
       };
