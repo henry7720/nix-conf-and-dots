@@ -164,8 +164,10 @@
     rtkit.enable = true;
     pam.services = {
       login.oo7.enable = true;
-      login.fprintAuth = true;
-      greetd.fprintAuth = true;
+      greetd = {
+        oo7.enable = true;
+        fprintAuth = false;
+      };
       swaylock.fprintAuth = true;
     };
   };
