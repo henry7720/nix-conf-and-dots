@@ -267,12 +267,16 @@ in
     gtk3 = {
       bookmarks = [
         "file:///home/henry/Documents"
-        "file:///home/henry/Documents/tOSU/CDME"
-        "file:///home/henry/Documents/tOSU"
-        "file:///home/henry/Pictures/Screenshots"
         "file:///home/henry/Downloads"
+        "file:///home/henry/Projects"
+        "file:///home/henry/Pictures/Screenshots"
+        "file:///home/henry/nixos"
+        "file:///home/henry/Videos"
+        "file:///home/henry/Music"
+        "file:///home/henry/Documents/tOSU"
       ];
     };
+    gtk4.bookmarks = gtk3.bookmarks;
   };
 
   # Only need the remaining non-GTK keys in dconf now:
@@ -300,7 +304,7 @@ in
       "application/xhtml+xml" = browser;
       "application/x-extension-xhtml" = browser;
       "application/x-extension-xht" = browser;
-
+      "application/pdf" = "org.kde.okular.desktop";
       "inode/directory" = "thunar.desktop";
       "x-scheme-handler/terminal" = "kitty.desktop";
 
