@@ -24,10 +24,15 @@
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
 
-    # LOAD GPU DRIVER HOPEFULLY CLEANER
+    # LOAD GPU DRIVER for encryption prompt
     initrd.kernelModules = [ "amdgpu" ];
-    # ENSURE THAT WE CAN SET CONSERVATION MODE ON EVERY BOOT
-    kernelModules = [ "ideapad_laptop" ];
+
+    kernelModules = [
+      # ensure we can set conservation mode on every boot
+      "ideapad_laptop"
+      # for nixos:
+      "sg"
+    ];
   };
 
   console = {

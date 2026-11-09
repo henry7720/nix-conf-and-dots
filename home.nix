@@ -20,36 +20,40 @@ in
 
       packages = [
         #"org.jdownloader.JDownloader"
-        "com.makemkv.MakeMKV"
+        #"com.makemkv.MakeMKV"
       ];
 
-      overrides = {
-        # Removes any override files in ~/.local/share/flatpak/overrides not declared here
-        pruneUnmanagedOverrides = true;
-        # Replaces override files with pure Nix-evaluated files instead of merging with old manual edits
-        writeMode = "replace";
+#       overrides = {
+#         # Removes any override files in ~/.local/share/flatpak/overrides not declared here
+#         pruneUnmanagedOverrides = true;
+#         # Replaces override files with pure Nix-evaluated files instead of merging with old manual edits
+#         writeMode = "replace";
 
-        settings = {
-          global = {
-            Context = {
-              filesystems = [
-                # Required on NixOS so Home Manager symlinks (kdeglobals, gtk-3.0) and icons resolve
-                "/nix/store:ro"
-                "xdg-config/kdeglobals:ro"
-                "xdg-config/gtk-3.0:ro"
-                "xdg-data/color-schemes:ro"
-                "xdg-data/icons:ro"
-              ];
-            };
-            Environment = {
-              XMODIFIERS = "@im=fcitx";
-              QT_QPA_PLATFORMTHEME = "kde";
-              QT_STYLE_OVERRIDE = "Breeze";
-              # Allows Flatpaks to find your Nix-packaged Oxygen icons and Breeze themes
-              #XDG_DATA_DIRS = "${pkgs.kdePackages.oxygen-icons}/share:${pkgs.kdePackages.breeze-gtk}/share:/run/host/user-share:/run/host/share";
-            };
-          };
-        };
+#         settings = {
+#           global = {
+#             Context = {
+#               filesystems = [
+#                 # Required on NixOS so Home Manager symlinks (kdeglobals, gtk-3.0) and icons resolve
+#                 "/nix/store:ro"
+#                 "xdg-config/kdeglobals:ro"
+#                 "xdg-config/gtk-3.0:ro"
+#                 "xdg-data/color-schemes:ro"
+#                 "xdg-data/icons:ro"
+#                 "${pkgs.kdePackages.oxygen-icons}:ro"
+#                 "~/.icons:ro"
+#                 "${pkgs.adwaita-icon-theme}:ro"
+#               ];
+#             };
+#             Environment = {
+#               XMODIFIERS = "@im=fcitx";
+#               QT_QPA_PLATFORMTHEME = "kde";
+#               QT_STYLE_OVERRIDE = "Breeze";
+#               XCURSOR_THEME = config.home.pointerCursor.name;
+#               XCURSOR_SIZE = toString config.home.pointerCursor.size;
+#               XCURSOR_PATH = "${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:${config.home.pointerCursor.package}/share/icons:/run/current-system/sw/share/icons";
+#             };
+#           };
+#         };
       };
     };
   };
@@ -101,7 +105,7 @@ in
         kdePackages.kclock
         kdePackages.kcharselect
         #bazaar
-        #makemkv
+        makemkv
         qalculate-qt
         pika-backup
         xournalpp
@@ -196,7 +200,9 @@ in
       EDITOR = "nano";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       PODMAN_COMPOSE_WARNING_LOGS = "false";
-
+      XCURSOR_THEME = config.home.pointerCursor.name;
+      XCURSOR_SIZE = toString config.home.pointerCursor.size;
+      XCURSOR_PATH = "${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:${config.home.pointerCursor.package}/share/icons:/run/current-system/sw/share/icons";
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
