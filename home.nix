@@ -63,7 +63,7 @@ in
         wl-clipboard
         jq
         xwayland-satellite
-        libayatana-appindicator
+        #libayatana-appindicator
 	kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
