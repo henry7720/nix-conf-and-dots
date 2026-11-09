@@ -202,9 +202,6 @@ in
       EDITOR = "nano";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       PODMAN_COMPOSE_WARNING_LOGS = "false";
-      XCURSOR_THEME = config.home.pointerCursor.name;
-      XCURSOR_SIZE = toString config.home.pointerCursor.size;
-      XCURSOR_PATH = "${config.home.homeDirectory}/.icons:${config.home.homeDirectory}/.local/share/icons:${config.home.pointerCursor.package}/share/icons:/run/current-system/sw/share/icons";
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
