@@ -219,15 +219,11 @@ in
     enable = true;
     theme = {
       name = "Breeze-Dark";
-      package = with pkgs; [
-        kdePackages.breeze-gtk
-      ];
+      package = kdePackages.breeze-gtk;
     };
     iconTheme = {
       name = "oxygen";
-      package = with pkgs; [
-        kdePackages.oxygen-icons
-      ];
+      package = pkgs.kdePackages.oxygen-icons;
     };
     font = {
       name = "Noto Sans";
