@@ -302,7 +302,7 @@ in
       "text/plain" = "org.kde.kwrite.desktop";
       "text/x-nix" = "org.kde.kwrite.desktop";
       "application/xml" = "org.kde.kwrite.desktop";
-
+      "text/markdown" = "org.kde.kwrite.desktop";
       "video/mp4" = "vlc.desktop";
       "video/webm" = "vlc.desktop";
       "audio/mp4" = "audacious.desktop";
