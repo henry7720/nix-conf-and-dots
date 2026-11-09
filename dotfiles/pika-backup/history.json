@@ -62,9 +62,7 @@
       }
     ],
     "running": null,
-    "browsing": {
-      "start": "2026-11-08T18:40:07.051611850-05:00"
-    },
+    "browsing": null,
     "last_completed": {
       "end": "2026-11-07T15:00:55-05:00",
       "outcome": {

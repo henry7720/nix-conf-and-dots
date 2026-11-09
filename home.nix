@@ -219,9 +219,15 @@ in
     enable = true;
     theme = {
       name = "Breeze-Dark";
+      package = with pkgs; [
+        kdePackages.breeze-gtk
+      ];
     };
     iconTheme = {
       name = "oxygen";
+      package = with pkgs; [
+        kdePackages.oxygen-icons
+      ];
     };
     font = {
       name = "Noto Sans";
@@ -247,41 +253,33 @@ in
     color-scheme = "prefer-dark";
   };
   
-  xdg.mimeApps = {
+  xdg.mimeApps = let
+    browser = "firefox.desktop";
+    # editor = "org.kde.kwrite.desktop";
+  in {
     enable = true;
     defaultApplications = {
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/chrome" = "firefox.desktop";
-      "text/html" = "firefox.desktop";
-      "application/x-extension-htm" = "firefox.desktop";
-      "application/x-extension-html" = "firefox.desktop";
-      "application/x-extension-shtml" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "application/x-extension-xhtml" = "firefox.desktop";
-      "application/x-extension-xht" = "firefox.desktop";
+      "x-scheme-handler/http" = browser;
+      "x-scheme-handler/https" = browser;
+      "x-scheme-handler/chrome" = browser;
+      "text/html" = browser;
+      "application/x-extension-htm" = browser;
+      "application/x-extension-html" = browser;
+      "application/x-extension-shtml" = browser;
+      "application/xhtml+xml" = browser;
+      "application/x-extension-xhtml" = browser;
+      "application/x-extension-xht" = browser;
+
       "inode/directory" = "thunar.desktop";
       "x-scheme-handler/terminal" = "kitty.desktop";
-    };
-    associations.added = {
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
-      "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-      "text/html" = [ "firefox.desktop" ];
-      "application/x-extension-htm" = [ "firefox.desktop" ];
-      "application/x-extension-html" = [ "firefox.desktop" ];
-      "application/x-extension-shtml" = [ "firefox.desktop" ];
-      "application/xhtml+xml" = [ "firefox.desktop" ];
-      "application/x-extension-xhtml" = [ "firefox.desktop" ];
-      "application/x-extension-xht" = [ "firefox.desktop" ];
-      "text/x-nix" = [ "org.kde.kwrite.desktop" ];
-      "inode/directory" = [ "kitty-open.desktop" "thunar.desktop" ];
-      "text/plain" = [ "org.kde.kwrite.desktop" ];
-      "x-scheme-handler/terminal" = [ "kitty.desktop" ];
-      "application/xml" = [ "org.kde.kwrite.desktop" ];
-      "video/mp4" = [ "vlc.desktop" ];
-      "video/webm" = [ "vlc.desktop" ];
-      "audio/mp4" = [ "audacious.desktop" ];
+
+      "text/plain" = "org.kde.kwrite.desktop";
+      "text/x-nix" = "org.kde.kwrite.desktop";
+      "application/xml" = "org.kde.kwrite.desktop";
+
+      "video/mp4" = "vlc.desktop";
+      "video/webm" = "vlc.desktop";
+      "audio/mp4" = "audacious.desktop";
     };
   };
 
@@ -305,20 +303,22 @@ in
     #"kdeglobals".source = dotfiles/kdeglobals;
     "xdg-terminals.list".text = ''kitty.desktop'';
     "kdeglobals" = {
-    force = true;
-    text = builtins.readFile "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors" + ''
+      force = true;
+      source = pkgs.concatText "kdeglobals" [
+        "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors"
+        (pkgs.writeText "kdeglobals-extra" ''
 
-      [Icons]
-      Theme=oxygen
+          [Icons]
+          Theme=oxygen
 
-      [KDE]
-      LookAndFeelPackage=org.kde.breezedark.desktop
-      widgetStyle=Breeze
+          [KDE]
+          LookAndFeelPackage=org.kde.breezedark.desktop
+          widgetStyle=Breeze
 
-      [UiSettings]
-      ColorScheme=BreezeDark
-    '';
-    };
+          [UiSettings]
+          ColorScheme=BreezeDark
+        '')
+      ];
 
     "qt6ct/style-colors.conf".source = dotfiles/qtct/style-colors.conf;
     
@@ -407,8 +407,8 @@ in
       
       shellAliases = {
         vi = "nvim";
-	vim = "nvim";
-	rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
+        vim = "nvim";
+        rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
       };
 
       initExtra = ''export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "'';
@@ -481,7 +481,7 @@ in
       enable = true;
       profiles.default = {
         isDefault = true;
-	path = "lr2w8zpp.default";
+        path = "lr2w8zpp.default";
         settings = {
           "browser.urlbar.trimURLs" = false;
         };

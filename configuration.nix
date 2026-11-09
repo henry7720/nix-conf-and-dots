@@ -15,14 +15,17 @@
     loader = {
       systemd-boot = {
         enable = true;
-	configurationLimit = 20;
-     };
+        configurationLimit = 20;
+      };
+
       efi.canTouchEfiVariables = true;
     };
     
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
-  };
+    # ENSURE THAT WE CAN SET CONSERVATION MODE ON EVERY BOOT
+    kernelModules = [ "ideapad_laptop" ];
+ };
 
   networking.hostName = "nixos-yoga"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -88,6 +91,7 @@
   };
   
   fonts.packages = with pkgs; [
+    noto-fonts
     nerd-fonts.jetbrains-mono
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
@@ -129,11 +133,12 @@
       enable = true;
       plugins = with pkgs; [
         thunar-archive-plugin
-	thunar-volman
+        thunar-volman
       ];
     };
 
     virt-manager.enable = true;
+    dconf.enable = true;
     k3b.enable = true;
   };
 
@@ -162,7 +167,21 @@
   };
   
   systemd = {
-    services.NetworkManager-wait-online.enable = false;
+    services = {
+      # Custom service to force battery to STAY NOT CHARGING PAST 80%
+      battery-conservation = {
+        wantedBy = [ "multi-user.target" ];
+        after = [ "systemd-modules-load.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+        };
+        script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode";
+      };
+
+      NetworkManager-wait-online.enable = false;
+    };
+
     oomd.enable = true;
   };
   
