@@ -21,7 +21,7 @@ in
       };
 
       packages = [
-        "org.jdownloader.JDownloader"
+        #"org.jdownloader.JDownloader"
 	"com.makemkv.MakeMKV"
       ];
     };
