@@ -276,7 +276,6 @@ in
         "file:///home/henry/Documents/tOSU"
       ];
     };
-    gtk4.bookmarks = gtk3.bookmarks;
   };
 
   # Only need the remaining non-GTK keys in dconf now:
