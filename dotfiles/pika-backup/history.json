@@ -1,0 +1,103 @@
+{
+  "63526fd0-49b3-47d4-9ec4-80d8bc1ea090": {
+    "config_version": 2,
+    "run": [
+      {
+        "end": "2026-11-07T23:14:01.816586238-05:00",
+        "outcome": {
+          "Aborted": "User"
+        },
+        "messages": [
+          {
+            "ParsedErr": {
+              "levelname": "ERROR",
+              "name": "borg.archiver",
+              "message": "Keyboard interrupt",
+              "msgid": "Undefined",
+              "context": {
+                "made_progress": true
+              }
+            }
+          }
+        ],
+        "include": [
+          ""
+        ],
+        "exclude": [
+          "Caches",
+          "Trash",
+          "FlatpakApps",
+          "VmsContainers"
+        ]
+      },
+      {
+        "end": "2026-11-07T15:00:55-05:00",
+        "outcome": {
+          "Completed": {
+            "stats": {
+              "archive": {
+                "duration": 39.0,
+                "id": "e1ebcf1f79a506caee754e333c127358a10b864d3f30ef6225ab715a522215e0",
+                "name": "bfb17a59",
+                "stats": {
+                  "compressed_size": 0,
+                  "deduplicated_size": 0,
+                  "nfiles": 0,
+                  "original_size": 0
+                }
+              }
+            }
+          }
+        },
+        "messages": [],
+        "include": [
+          ""
+        ],
+        "exclude": [
+          "Caches",
+          "Trash",
+          "FlatpakApps",
+          "VmsContainers"
+        ]
+      }
+    ],
+    "running": null,
+    "browsing": {
+      "start": "2026-11-08T18:40:07.051611850-05:00"
+    },
+    "last_completed": {
+      "end": "2026-11-07T15:00:55-05:00",
+      "outcome": {
+        "Completed": {
+          "stats": {
+            "archive": {
+              "duration": 39.0,
+              "id": "e1ebcf1f79a506caee754e333c127358a10b864d3f30ef6225ab715a522215e0",
+              "name": "bfb17a59",
+              "stats": {
+                "compressed_size": 0,
+                "deduplicated_size": 0,
+                "nfiles": 0,
+                "original_size": 0
+              }
+            }
+          }
+        }
+      },
+      "messages": [],
+      "include": [
+        ""
+      ],
+      "exclude": [
+        "Caches",
+        "Trash",
+        "FlatpakApps",
+        "VmsContainers"
+      ]
+    },
+    "last_check": null,
+    "suggested_exclude": {
+      "PermissionDenied": []
+    }
+  }
+}

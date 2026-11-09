@@ -1,0 +1,56 @@
+[
+  {
+    "config_version": 2,
+    "id": "63526fd0-49b3-47d4-9ec4-80d8bc1ea090",
+    "archive_prefix": "",
+    "repo_id": "77de682ecbcd23d68510945f98cbe9d8c9352c19373354401138c0a943d1444e",
+    "repo": {
+      "type": "Local",
+      "path": "backup-fedora-yoga-henry",
+      "mount_path": "/run/media/henry/Diff_Backups",
+      "uri": "file:///run/media/henry/Diff_Backups/backup-fedora-yoga-henry",
+      "drive_name": null,
+      "mount_name": "Diff_Backups",
+      "volume_uuid": null,
+      "volume_uuid_identifier": null,
+      "removable": false,
+      "icon": ". GThemedIcon drive-harddisk drive drive-harddisk-symbolic drive-symbolic",
+      "icon_symbolic": ". GThemedIcon drive-harddisk-symbolic drive-symbolic drive-harddisk drive",
+      "settings": null
+    },
+    "encrypted": false,
+    "encryption_mode": "repokey",
+    "include": [
+      ""
+    ],
+    "exclude": [
+      "Caches",
+      "Trash",
+      "FlatpakApps",
+      "VmsContainers"
+    ],
+    "schedule": {
+      "enabled": true,
+      "settings": {
+        "run_on_battery": false
+      },
+      "frequency": {
+        "Daily": {
+          "preferred_time": "23:00:00"
+        }
+      }
+    },
+    "prune": {
+      "enabled": false,
+      "keep": {
+        "hourly": 48,
+        "daily": 14,
+        "weekly": 4,
+        "monthly": 12,
+        "yearly": 10
+      }
+    },
+    "title": "",
+    "user_scripts": {}
+  }
+]

@@ -89,7 +89,7 @@ in
         audacious
         signal-desktop
         praat
-        vscodium-fhs
+        #vscodium-fhs
         distrobox
         micro
         neovim
@@ -285,9 +285,11 @@ in
 
     "qt6ct/style-colors.conf".source = dotfiles/qtct/style-colors.conf;
     
-    "niri/Chicago.jpg".source = dotfiles/niri/Chicago.jpg;
-    "niri/config.kdl".source = symlink "${fullDotfilesDir}/niri/config.kdl";
+    "niri".source = symlink "${fullDotfilesDir}/niri";
+    "rofi".source = symlink "${fullDotfilesDir}/rofi";
+    "arch-dev".source = symlink "${fullDotfilesDir}/arch-dev";
     "fcitx5".source = symlink "${fullDotfilesDir}/fcitx5";
+    "pika-backup".source = symlink "${fullDotfilesDir}/pika-backup";
   };
   
   qt = {

@@ -1,0 +1,12 @@
+{
+  "config_version": 2,
+  "activity": {
+    "63526fd0-49b3-47d4-9ec4-80d8bc1ea090": {
+      "used": {
+        "secs": 600,
+        "nanos": 0
+      },
+      "last_update": "2026-11-07T23:10:55.900312488-05:00"
+    }
+  }
+}
