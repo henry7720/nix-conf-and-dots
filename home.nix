@@ -11,19 +11,46 @@ in
   services = {
     hyprpolkitagent.enable = true;
     flatpak = {
-      enable = true; # This activates the nix-flatpak module for your user
-
-      # Automatically remove flatpaks from your user environment that are not listed here
+      enable = true;
       uninstallUnmanaged = true;
       update.auto = {
         enable = true;
-        onCalendar = "weekly"; # systemd timer format
+        onCalendar = "weekly";
       };
 
       packages = [
         #"org.jdownloader.JDownloader"
-	"com.makemkv.MakeMKV"
+        "com.makemkv.MakeMKV"
       ];
+
+      overrides = {
+        # Removes any override files in ~/.local/share/flatpak/overrides not declared here
+        pruneUnmanagedOverrides = true;
+        # Replaces override files with pure Nix-evaluated files instead of merging with old manual edits
+        writeMode = "replace";
+
+        settings = {
+          global = {
+            Context = {
+              filesystems = [
+                # Required on NixOS so Home Manager symlinks (kdeglobals, gtk-3.0) and icons resolve
+                "/nix/store:ro"
+                "xdg-config/kdeglobals:ro"
+                "xdg-config/gtk-3.0:ro"
+                "xdg-data/color-schemes:ro"
+                "xdg-data/icons:ro"
+              ];
+            };
+            Environment = {
+              XMODIFIERS = "@im=fcitx";
+              QT_QPA_PLATFORMTHEME = "kde";
+              QT_STYLE_OVERRIDE = "Breeze";
+              # Allows Flatpaks to find your Nix-packaged Oxygen icons and Breeze themes
+              XDG_DATA_DIRS = "${pkgs.kdePackages.oxygen-icons}/share:${pkgs.kdePackages.breeze-gtk}/share:/run/host/user-share:/run/host/share";
+            };
+          };
+        };
+      };
     };
   };
 
