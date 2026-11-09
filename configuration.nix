@@ -131,6 +131,10 @@
         thunar-volman
       ];
     };
+    #setup for thunar by nix docs
+    xfconf = {
+      enable = true;
+    };
 
     virt-manager.enable = true;
     dconf.enable = true;
@@ -192,6 +196,9 @@
 
     # match niri's default
     gnome.gnome-keyring.enable = true;
+
+    # for xfce
+    tumbler.enable = true;
 
     gvfs.enable = true;
 
