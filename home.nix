@@ -383,7 +383,7 @@ in
       enable = true;
       font = {
         name = "JetBrainsMonoNL Nerd Font";
-        # You can specify size here if needed, e.g., size = 12.0;
+        size = 12.0;
       };
 
       settings = {
