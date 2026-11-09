@@ -388,7 +388,7 @@ in
     thunar = {
       "last-view" = "ThunarDetailsView";
       "last-show-hidden" = true;
-      "misc-single-click" = false;
+      "misc-single-click" = true;
       "misc-use-csd" = false;
       "misc-text-beside-icons" = false;
       "misc-symbolic-icons-in-sidepane" = false;
