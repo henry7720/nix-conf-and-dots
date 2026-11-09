@@ -168,7 +168,7 @@
         oo7.enable = true;
         fprintAuth = false;
       };
-      swaylock.fprintAuth = true;
+      swaylock = {};
     };
   };
 
