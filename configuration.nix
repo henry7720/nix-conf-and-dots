@@ -163,10 +163,9 @@
   security = {
     rtkit.enable = true;
     pam.services = {
-      login = {
-        oo7.enable = true;
-        fprintAuth = false;
-      };
+      login.oo7.enable = true;
+
+      # this works
       swaylock = {};
     };
   };
