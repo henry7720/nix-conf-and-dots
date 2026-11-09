@@ -249,9 +249,8 @@ in
 
   xdg.configFile = {
     #"mako/config".source = dotfiles/mako/config;
-    "waybar/config.jsonc".source = dotfiles/waybar/config.jsonc;
-    "waybar/style.css".source = dotfiles/waybar/style.css;
-
+    "waybar".source = symlink "${fullDotfilesDir}/waybar";
+    "Thunar/uca.xml".source = dotfiles/Thunar/uca.xml;
     #"xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
     #  source = dotfiles/xfce4/xfconf/xfce-perchannel-xml/thunar.xml;
     #  force = true;
