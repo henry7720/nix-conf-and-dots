@@ -21,7 +21,8 @@ in
       };
 
       packages = [
-        #"md.obsidian.Obsidian"
+        "org.jdownloader.JDownloader"
+	"com.makemkv.MakeMKV"
       ];
     };
   };
@@ -62,7 +63,8 @@ in
         wl-clipboard
         jq
         xwayland-satellite
-        kdePackages.oxygen-icons
+        libayatana-appindicator
+	kdePackages.oxygen-icons
         kdePackages.breeze-gtk
         kdePackages.breeze
         kdePackages.breeze.qt5
@@ -71,8 +73,8 @@ in
         kdePackages.okular
         kdePackages.kclock
         kdePackages.kcharselect
-        bazaar
-        makemkv
+        #bazaar
+        #makemkv
         qalculate-qt
         pika-backup
         xournalpp
