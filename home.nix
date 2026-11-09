@@ -319,6 +319,7 @@ in
           ColorScheme=BreezeDark
         '')
       ];
+    };
 
     "qt6ct/style-colors.conf".source = dotfiles/qtct/style-colors.conf;
     
