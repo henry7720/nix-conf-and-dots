@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
+  # Use the systemd-boot EFI boot loader, but override with lanzaboote.
   boot = {
     
     lanzaboote = {
@@ -27,7 +27,7 @@
 
       efi = {
         canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot";
+        efiSysMountPoint = "/boot";
       };
     };
     
