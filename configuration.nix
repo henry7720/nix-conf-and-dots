@@ -12,13 +12,23 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
+    
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
     loader = {
+      # force off systemd-boot for lanzaboote
       systemd-boot = {
-        enable = true;
+        enable = lib.mkForce false;
         configurationLimit = 20;
       };
 
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+	efiSysMountPoint = "/boot";
+      };
     };
     
     # Use latest kernel
@@ -264,6 +274,7 @@
   environment = {
     systemPackages = with pkgs; [
       brightnessctl
+      sbctl
     ];
   };
   # List packages installed in system profile.
