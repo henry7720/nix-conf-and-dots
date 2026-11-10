@@ -3,6 +3,36 @@
     "config_version": 2,
     "run": [
       {
+        "end": "2026-11-09T23:08:45.459764709-05:00",
+        "outcome": {
+          "Completed": {
+            "stats": {
+              "archive": {
+                "duration": 33.645966,
+                "id": "a3e2274510d8ec7af7f52dab03cf3c867541c1af58e65db091932f5b0b7a6d53",
+                "name": "560ae2ca",
+                "stats": {
+                  "compressed_size": 114157029975,
+                  "deduplicated_size": 166113102,
+                  "nfiles": 354598,
+                  "original_size": 137186829283
+                }
+              }
+            }
+          }
+        },
+        "messages": [],
+        "include": [
+          ""
+        ],
+        "exclude": [
+          "Caches",
+          "Trash",
+          "FlatpakApps",
+          "VmsContainers"
+        ]
+      },
+      {
         "end": "2026-11-09T23:02:23.732157495-05:00",
         "outcome": {
           "Failed": "Repository.DoesNotExist"
@@ -122,19 +152,19 @@
     "running": null,
     "browsing": null,
     "last_completed": {
-      "end": "2026-11-08T23:08:19.263108479-05:00",
+      "end": "2026-11-09T23:08:45.459764709-05:00",
       "outcome": {
         "Completed": {
           "stats": {
             "archive": {
-              "duration": 424.570817,
-              "id": "20d18686ce00c479ba70a4aecaf3c1b78f6ef560926738e2cfb64e80596306d1",
-              "name": "ab54597a",
+              "duration": 33.645966,
+              "id": "a3e2274510d8ec7af7f52dab03cf3c867541c1af58e65db091932f5b0b7a6d53",
+              "name": "560ae2ca",
               "stats": {
-                "compressed_size": 114060539279,
-                "deduplicated_size": 415052943,
-                "nfiles": 351891,
-                "original_size": 137028777969
+                "compressed_size": 114157029975,
+                "deduplicated_size": 166113102,
+                "nfiles": 354598,
+                "original_size": 137186829283
               }
             }
           }

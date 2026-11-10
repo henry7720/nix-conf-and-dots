@@ -289,7 +289,7 @@ in
   
   xdg.mimeApps = let
     browser = "firefox.desktop";
-    # editor = "org.kde.kwrite.desktop";
+    editor = "org.kde.kwrite.desktop";
   in {
     enable = true;
     defaultApplications = {
@@ -307,10 +307,11 @@ in
       "inode/directory" = "thunar.desktop";
       "x-scheme-handler/terminal" = "kitty.desktop";
 
-      "text/plain" = "org.kde.kwrite.desktop";
-      "text/x-nix" = "org.kde.kwrite.desktop";
-      "application/xml" = "org.kde.kwrite.desktop";
-      "text/markdown" = "org.kde.kwrite.desktop";
+      "text/plain" = editor;
+      "inode/x-empty" = editor;
+      "text/x-nix" = editor;
+      "application/xml" = editor;
+      "text/markdown" = editor;
       "video/mp4" = "vlc.desktop";
       "video/webm" = "vlc.desktop";
       "audio/mp4" = "audacious.desktop";
