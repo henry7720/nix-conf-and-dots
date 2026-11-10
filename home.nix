@@ -12,8 +12,8 @@ in
     # prompt for passwords graphically
     hyprpolkitagent.enable = true;
 
-    # for player control via bluetooth stuff
-    playerctld.enable = true;
+    # (optional) for player control via bluetooth stuff
+    # playerctld.enable = true;
 
     flatpak = {
       enable = true;
