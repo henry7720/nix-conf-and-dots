@@ -182,7 +182,7 @@
         //"on-click": "flatpak run org.pulseaudio.pavucontrol -t 3"
     },
     "custom/bluetooth": {
-      "format": "🦷",
+      "format": "",
       "tooltip": false,
       "on-click": "pkill -x bluetui || exec kitty --class bluetui -o confirm_os_window_close=0 -e bluetui"
     },
