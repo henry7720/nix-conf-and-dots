@@ -9,7 +9,12 @@ let
 in
 {
   services = {
+    # prompt for passwords graphically
     hyprpolkitagent.enable = true;
+
+    # for player control via bluetooth stuff
+    playerctld.enable = true;
+
     flatpak = {
       enable = true;
       uninstallUnmanaged = true;
@@ -392,7 +397,7 @@ in
     thunar = {
       "last-view" = "ThunarDetailsView";
       "last-show-hidden" = true;
-      "misc-single-click" = true;
+      "misc-single-click" = false;
       "misc-use-csd" = false;
       "misc-text-beside-icons" = false;
       "misc-symbolic-icons-in-sidepane" = false;
