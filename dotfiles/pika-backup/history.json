@@ -3,6 +3,34 @@
     "config_version": 2,
     "run": [
       {
+        "end": "2026-11-09T23:02:23.732157495-05:00",
+        "outcome": {
+          "Failed": "Repository.DoesNotExist"
+        },
+        "messages": [
+          {
+            "ParsedErr": {
+              "levelname": "ERROR",
+              "name": "borg.archiver",
+              "message": "Repository /run/media/henry/Diff_Backups/backup-fedora-yoga-henry does not exist.",
+              "msgid": "Repository.DoesNotExist",
+              "context": {
+                "made_progress": false
+              }
+            }
+          }
+        ],
+        "include": [
+          ""
+        ],
+        "exclude": [
+          "Caches",
+          "Trash",
+          "FlatpakApps",
+          "VmsContainers"
+        ]
+      },
+      {
         "end": "2026-11-08T23:08:19.263108479-05:00",
         "outcome": {
           "Completed": {

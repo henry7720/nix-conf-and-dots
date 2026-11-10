@@ -1,0 +1,5 @@
+Use nix-shell -p sbctl and then sbctl create-keys --microsoft
+
+Then enable the rest
+
+Rip lanzaboote out beforehand if on new computer
