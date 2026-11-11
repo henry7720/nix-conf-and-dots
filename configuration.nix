@@ -77,14 +77,15 @@
   networking = {
     networkmanager = {
       enable = true;
-      # better
+      # better backend than wpa_supplicant
       wifi.backend = "iwd";
+
+      # use fedora default local DNS caching resolver
       dns = "systemd-resolved";
     };
 
     # explicitly enable firewall, even though it's default
     firewall.enable = true;
-    nftables.enable = true;
   };
   # Set your time zone.
   time.timeZone = "America/New_York";
