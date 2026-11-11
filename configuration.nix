@@ -32,13 +32,11 @@
     };
     
     # Use latest kernel
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     #default old version
     #kernelPackages = pkgs.linuxPackages;
 
-    # Using non-latest to hopefully prevent color-shift regression, remove all that follows .packages to solve
-    kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
     # LOAD GPU DRIVER for encryption prompt
     initrd.kernelModules = [ "amdgpu" ];
 
