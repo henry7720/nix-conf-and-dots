@@ -179,9 +179,14 @@
   security.rtkit.enable = true;
     #pam.services.swaylock = {};
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
+  hardware = {
+    # hopefully fix auto-disconnecting on 6G networks
+    wirelessRegulatoryDatabase = true;
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
   };
   
   systemd = {
