@@ -449,7 +449,18 @@ in
       shellAliases = {
         vi = "nvim";
         vim = "nvim";
-        rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
+        
+        # low-risk changes only
+	rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
+
+	# Update the lock, build without activating, show what changed (no root)
+        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --flake .#nixos-yoga && nix store diff-closures /run/current-system ./result)";
+
+        # Install as the next boot entry without touching the running system
+        up-boot = "nixos-rebuild boot --flake ~/nixos#nixos-yoga --sudo";
+
+        # Firmware (BIOS/EC) updates, which don't come from nixpkgs
+        up-fw = "fwupdmgr refresh && fwupdmgr update";
       };
 
       initExtra = ''export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "'';
