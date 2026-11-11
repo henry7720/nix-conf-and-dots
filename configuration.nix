@@ -198,10 +198,9 @@
         script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode";
       };
 
+      # annoying wait
+      networkmanager-wait-online.enable = false;
     };
-
-    # annoying
-    networkmanager-wait-online.enable = false;
 
     oomd.enable = true;
   };
