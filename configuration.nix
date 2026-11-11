@@ -34,8 +34,8 @@
     # Use latest kernel
     #kernelPackages = pkgs.linuxPackages_latest;
 
-    # Using older to prevent color shift regression
-    kernelPackages = pkgs.linuxPackages;
+    # Using older to prevent color shift regression, remove all that follows .packages to solve
+    kernelPackages = pkgs.linuxPackages.packages.linux_7_2;
     # LOAD GPU DRIVER for encryption prompt
     initrd.kernelModules = [ "amdgpu" ];
 
@@ -179,14 +179,9 @@
   security.rtkit.enable = true;
     #pam.services.swaylock = {};
 
-  hardware = {
-    # hopefully fix auto-disconnecting on 6G networks
-    wirelessRegulatoryDatabase = true;
-
-    bluetooth = {
-      enable = true;
-      powerOnBoot = false;
-    };
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
   };
   
   systemd = {
