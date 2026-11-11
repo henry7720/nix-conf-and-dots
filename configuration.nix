@@ -212,6 +212,9 @@
       };
     };
 
+    # Enable fwupd
+    fwupd.enable = true;
+
     # match niri's default
     gnome.gnome-keyring.enable = true;
 
