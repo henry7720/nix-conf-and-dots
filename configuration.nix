@@ -75,7 +75,15 @@
   };
   # Enable networking
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      # better
+      wifi.backend = "iwd";
+      dns = "systemd-resolved";
+    };
+
+    # explicitly enable firewall, even though it's default
+    firewall.enable = true;
     nftables.enable = true;
   };
   # Set your time zone.
@@ -189,7 +197,6 @@
         script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode";
       };
 
-      NetworkManager-wait-online.enable = false;
     };
 
     oomd.enable = true;
@@ -211,6 +218,9 @@
         };
       };
     };
+
+    # enable systemd-resolved
+    resolved.enable = true;
 
     # Enable fwupd
     fwupd.enable = true;
