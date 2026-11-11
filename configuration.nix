@@ -78,7 +78,7 @@
     networkmanager = {
       enable = true;
       # better backend than wpa_supplicant
-      wifi.backend = "iwd";
+      #wifi.backend = "iwd";
 
       # use fedora default local DNS caching resolver
       dns = "systemd-resolved";
