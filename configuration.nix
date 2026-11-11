@@ -200,6 +200,9 @@
 
     };
 
+    # annoying
+    networkmanager-wait-online.enable = false;
+
     oomd.enable = true;
   };
   
