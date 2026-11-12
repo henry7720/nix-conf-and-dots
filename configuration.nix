@@ -32,10 +32,10 @@
     };
     
     # Use latest kernel
-    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     #default old version
-    kernelPackages = pkgs.linuxPackages;
+    #kernelPackages = pkgs.linuxPackages;
 
     # LOAD GPU DRIVER for encryption prompt
     initrd.kernelModules = [ "amdgpu" ];
