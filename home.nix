@@ -451,12 +451,14 @@ in
         vim = "nvim";
         
         # low-risk changes only
-	rb-flake = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
+	up-live = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
 
-	# Update the lock, build without activating, show what changed (no root)
-        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --flake .#nixos-yoga && nix store diff-closures /run/current-system ./result)";
+	# Update flakes for actual updates
+	# Test build to see if it builds!
+        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --flake .#nixos-yoga)";
 
-        # Install as the next boot entry without touching the running system
+        # Higher risk changes: install as the next boot entry without touching the running system
+	# if it doesn't boot you lose nothing
         up-boot = "nixos-rebuild boot --flake ~/nixos#nixos-yoga --sudo";
 
         # Firmware (BIOS/EC) updates, which don't come from nixpkgs
