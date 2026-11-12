@@ -11,7 +11,7 @@ It has been an amazing learning experience diving into the declarative world, ha
 
 ## System Architecture
 
-As a principle, the system [`configuration.nix`](configuration.nix) is focused on software interacting with hardware, kernel interfaces, and components requiring root privileges (think system daemons and virtualization), also included is a [`hardware-configuration.nix`](hardware-configration.nix) file which would ideally be regenerated per-device.
+As a principle, the system [`configuration.nix`](configuration.nix) is focused on software interacting with hardware, kernel interfaces, and components requiring root privileges (think system daemons and virtualization), also included is a [`hardware-configuration.nix`](hardware-configuration.nix) file which would ideally be regenerated per-device.
 
 * **Storage & Early Boot (`initrd`):** Built on a LUKS-encrypted Btrfs root filesystem with dedicated `home` and `nix` subvolumes, plus a monthly `btrfs.autoScrub` job. The `amdgpu` kernel module is injected directly into `boot.initrd.kernelModules` alongside early console setup (`spleen-12x24` font) to ensure outputs to external displays during the LUKS passphrase prompt. Impermanence may be a future project, time allowing.
 
@@ -64,7 +64,7 @@ There is more not described above and plenty more work to be done. Meanwhile, th
 * **Waybar ([`dotfiles/waybar/`](dotfiles/waybar/)):** A compact 20px top bar with useful modules, such as clock/bluetooth/network/CPU, etc. styled with GTK CSS resets to prevent height clipping, color-coded per-module underlines, and click handlers tied to the floating Kitty TUI rules.
 
 
-* **Fcitx5 ([`dotfiles/fcitx5/`](dotfiles/fcitx5/)):** Pinyin and Traditional/Simplified Chinese (`chttrans` via OpenCC) input method profiles, custom input-method toggle key of (`Caps_Lock`) matching mainland Chinese conventions (default function voerridden in Niri), and `Noto Sans CJK TC` candidate rendering.
+* **Fcitx5 ([`dotfiles/fcitx5/`](dotfiles/fcitx5/)):** Pinyin and Traditional/Simplified Chinese (`chttrans` via OpenCC) input method profiles, custom input-method toggle key of (`Caps_Lock`) matching mainland Chinese conventions (default function overridden in Niri), and `Noto Sans CJK TC` candidate rendering.
 
 
 * **Bonus - Quasi-Declarative Distrobox (`dotfiles/arch-dev/arch-dev.ini`):** A Podman-backed `distrobox-assemble` manifest (`quay.io/toolbx/arch-toolbox:latest`) that provisions an `arch-dev` build container with its own dedicated home directory (`~/arch-dev`). On creation, it automatically installs compilers and toolchains (`gcc`, `clang`, `llvm`, `gdb`, `valgrind`, `rust`, `uv`, `python`, `nodejs`, `jdk-openjdk`), symlinks host credentials and IDE configs (`.ssh`, `.config/git`, `.gemini`, `VSCodium`), bootstraps `yay-bin` and `vscodium-bin` from the AUR via `init_hooks`, and exports the binaries (`exported_bins`) and VSCodium (`exported_apps`) directly back to the NixOS host. The very same build could very well be implemented in a Containerfile, also. To be clear, the script is *not perfect* and has some security gotchas, so use with caution, but it meets my needs very well (at least until I get VSCodium declaratively defined or managed otherwise).
