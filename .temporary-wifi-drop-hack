@@ -1,1 +1,0 @@
-nmcli connection modify "Trent+Darko Abode" 802-11-wireless.band a
