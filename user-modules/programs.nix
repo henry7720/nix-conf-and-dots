@@ -89,6 +89,13 @@
       };
     };
 
+    # enable bash integration
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    };
+
     anki.enable = true;
   };
 }
