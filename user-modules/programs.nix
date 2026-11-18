@@ -73,6 +73,7 @@
           email = "henry@htrow.dev";
         };
         init.defaultBranch = "main";
+        push.autoSetupRemote = true;
       };
     };
 
