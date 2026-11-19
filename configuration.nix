@@ -212,6 +212,8 @@
       ppdSupport = true;
     };
     
+    zramSwap.enable = true;
+    
     greetd = {
       enable = true;
       settings = {
