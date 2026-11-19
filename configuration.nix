@@ -42,8 +42,13 @@
     #kernelPackages = pkgs.linuxPackages;
 
     # LOAD GPU DRIVER for encryption prompt
-    initrd.kernelModules = [ "amdgpu" ];
+    initrd = {
+      kernelModules = [ "amdgpu" ];
 
+      # needed for fstrim
+      luks.devices."luks-41e666ac-09ec-4832-882d-24a07775230a".allowDiscards = true;
+    };
+    
     kernelModules = [
       # ensure we can set conservation mode on every boot
       "ideapad_laptop"
@@ -58,6 +63,13 @@
       "vm.watermark_scale_factor" = 125;
       "vm.page-cluster" = 0;
     };
+  };
+
+  # enable btrfs performance settings, especially compression
+  fileSystems = {
+    "/".options = [ "compress=zstd:1" "noatime" ];
+    "/home".options = [ "compress=zstd:1" "noatime" ];
+    "/nix".options = [ "compress=zstd:1" "noatime" ];
   };
 
   console = {
@@ -110,18 +122,19 @@
       "zh_TW.UTF-8/UTF-8"
       "zh_CN.UTF-8/UTF-8"
     ];
-
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
-    };
+    
+    # not necessary
+    # extraLocaleSettings = {
+    #   LC_ADDRESS = "en_US.UTF-8";
+    #   LC_IDENTIFICATION = "en_US.UTF-8";
+    #   LC_MEASUREMENT = "en_US.UTF-8";
+    #   LC_MONETARY = "en_US.UTF-8";
+    #   LC_NAME = "en_US.UTF-8";
+    #   LC_NUMERIC = "en_US.UTF-8";
+    #   LC_PAPER = "en_US.UTF-8";
+    #   LC_TELEPHONE = "en_US.UTF-8";
+    #   LC_TIME = "en_US.UTF-8";
+    # };
   
     inputMethod = {
       enable = true;
