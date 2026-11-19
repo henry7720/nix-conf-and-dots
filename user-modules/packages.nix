@@ -89,6 +89,7 @@
     praat
     #vscodium-fhs
     distrobox
+    podman-compose
     micro
     neovim
     fastfetch
