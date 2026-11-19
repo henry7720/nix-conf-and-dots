@@ -59,6 +59,7 @@
     wl-clipboard
     jq
     xwayland-satellite
+    trashy
     #libayatana-appindicator
     kdePackages.oxygen-icons
     kdePackages.breeze-gtk
