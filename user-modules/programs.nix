@@ -34,7 +34,7 @@
 
         # Update flakes for actual updates
         # Test build to see if it builds!
-        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --flake .#nixos-yoga)";
+        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --flake .#nixos-yoga --no-out-link)";
 
         # Higher risk changes: install as the next boot entry without touching the running system
         # if it doesn't boot you lose nothing
