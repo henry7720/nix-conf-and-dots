@@ -206,14 +206,14 @@
     oomd.enable = true;
   };
   
+  zramSwap.enable = true;
+
   services = {
     tuned = {
       enable = true;
       ppdSupport = true;
     };
-    
-    zramSwap.enable = true;
-    
+
     greetd = {
       enable = true;
       settings = {
