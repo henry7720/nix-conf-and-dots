@@ -16,13 +16,14 @@
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
+      # place this in lanzaboote
+      configurationLimit = 20;
     };
 
     loader = {
       # force off systemd-boot for lanzaboote
       systemd-boot = {
         enable = lib.mkForce false;
-        configurationLimit = 20;
       };
 
       efi = {
@@ -33,6 +34,9 @@
     
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
+
+    # keep LTS fallback if i ever want both
+    # specialisation.lts-kernel.configuration.boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
 
     #default old version
     #kernelPackages = pkgs.linuxPackages;
@@ -46,6 +50,14 @@
       # for nixos:
       "sg"
     ];
+
+    # zram swap recommendations arch wiki
+    kernel.sysctl = {
+      "vm.swappiness" = 180;
+      "vm.watermark_boost_factor" = 0;
+      "vm.watermark_scale_factor" = 125;
+      "vm.page-cluster" = 0;
+    };
   };
 
   console = {
@@ -95,7 +107,6 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocales = [
-      "en_US.UTF-8/UTF-8"
       "zh_TW.UTF-8/UTF-8"
       "zh_CN.UTF-8/UTF-8"
     ];
@@ -166,6 +177,9 @@
     virt-manager.enable = true;
     dconf.enable = true;
     k3b.enable = true;
+
+    # external binary compatibility
+    nix-ld.enable = true;
   };
 
   virtualisation = {
@@ -206,6 +220,7 @@
     oomd.enable = true;
   };
   
+  # setup zram, defaults 50% memory and zstd are good
   zramSwap.enable = true;
 
   services = {
@@ -213,6 +228,9 @@
       enable = true;
       ppdSupport = true;
     };
+
+    # good for SSDs
+    fstrim.enable = true;
 
     greetd = {
       enable = true;
