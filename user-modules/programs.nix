@@ -50,13 +50,8 @@
     obs-studio.enable = true;
     joplin-desktop.enable = true;
 
-    yt-dlp = {
-      enable = true;
-      settings = {
-        js-runtimes = "node";
-      };
-    };
-
+    yt-dlp.enable = true;
+    
     gh = {
       enable = true;
       gitCredentialHelper = {

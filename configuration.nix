@@ -45,14 +45,14 @@
     initrd = {
       kernelModules = [ "amdgpu" ];
 
-      # needed for fstrim
+      # needed for fstrim set to correct luks device in future
       luks.devices."luks-41e666ac-09ec-4832-882d-24a07775230a".allowDiscards = true;
     };
     
     kernelModules = [
       # ensure we can set conservation mode on every boot
       "ideapad_laptop"
-      # for nixos:
+      # for nixos blu-ray ripping:
       "sg"
     ];
 
@@ -66,6 +66,8 @@
   };
 
   # enable btrfs performance settings, especially compression
+  # retroactively run: sudo btrfs filesystem defragment -r -v -czstd /home
+  # works on other subvolumes but you shouldn't need it anywhere else
   fileSystems = {
     "/".options = [ "compress=zstd:1" "noatime" ];
     "/home".options = [ "compress=zstd:1" "noatime" ];
