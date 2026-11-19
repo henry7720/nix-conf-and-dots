@@ -200,7 +200,7 @@
       };
 
       # annoying wait
-      networkmanager-wait-online.enable = false;
+      NetworkManager-wait-online.enable = lib.mkForce false;
     };
 
     oomd.enable = true;
