@@ -92,7 +92,7 @@
     distrobox
     podman-compose
     micro
-    helix
+    #helix
     #neovim
     fastfetch
 
