@@ -26,8 +26,10 @@
       enable = true;
 
       shellAliases = {
-        vi = "nvim";
-        vim = "nvim";
+        # vi = "nvim";
+        # vim = "nvim";
+        vi = "hx";
+	vim = "hx";
 
         # low-risk changes only
         up-live = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
@@ -45,6 +47,19 @@
       };
 
       initExtra = ''export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ "'';
+    };
+
+    helix = {
+      enable = true;
+      defaultEditor = true;
+      # extraPackages = with pkgs; [
+      #  rust-language-server
+      #  jdt-language-server
+      #  ccls
+      #  bash-language-server
+      # typescript-language-server
+      #  nixfmt
+      # ];
     };
 
     obs-studio.enable = true;
