@@ -93,7 +93,7 @@
     podman-compose
     micro
     helix
-    neovim
+    #neovim
     fastfetch
 
     # Compilers & Toolchains
