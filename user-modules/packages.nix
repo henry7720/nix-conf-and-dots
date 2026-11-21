@@ -92,6 +92,7 @@
     distrobox
     podman-compose
     micro
+    helix
     neovim
     fastfetch
 
