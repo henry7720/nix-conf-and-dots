@@ -10,7 +10,6 @@ in
     name = "Adwaita";
     size = 24;
     gtk.enable = true;
-    x11.enable = true;
   };
 
 #   fonts.fontconfig = {
@@ -29,8 +28,8 @@ in
       package = pkgs.kdePackages.breeze-gtk;
     };
     iconTheme = {
-      name = "oxygen";
-      package = pkgs.kdePackages.oxygen-icons;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme.override { color = "violet"; };
     };
     font = {
       name = "Noto Sans";
@@ -66,7 +65,7 @@ in
         #color_scheme_path = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
         color_scheme_path = "${homeDir}/.config/qt6ct/style-colors.conf";
         custom_palette = true;
-        icon_theme = "oxygen";
+        icon_theme = "Papirus-Dark";
         standard_dialogs = "default";
         style = "Breeze";
       };
@@ -89,7 +88,7 @@ in
         (pkgs.writeText "kdeglobals-extra" ''
 
           [Icons]
-          Theme=oxygen
+          Theme=Papirus-Dark
 
           [KDE]
           LookAndFeelPackage=org.kde.breezedark.desktop
