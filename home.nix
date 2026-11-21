@@ -19,7 +19,7 @@
     ];
 
     sessionVariables = {
-      EDITOR = "nano";
+      #EDITOR = "nano";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       PODMAN_COMPOSE_WARNING_LOGS = "false";
     };
