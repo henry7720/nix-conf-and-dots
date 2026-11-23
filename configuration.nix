@@ -90,8 +90,7 @@
   nix = {
     channel.enable = false; # optional
     registry.nixpkgs.flake = inputs.nixpkgs;
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # optional, keeps `nix-shell -p` working
-
+    
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
