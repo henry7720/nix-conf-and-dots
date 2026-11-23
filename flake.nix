@@ -1,6 +1,9 @@
 {
   description = "Unified NixOS and Home Manager Flake";
-
+  # for using flakes and NO channels:
+  # sudo nix-channel --list
+  # sudo nix-channel --remove nixos
+  # sudo rm -f /nix/var/nix/profiles/per-user/root/channels* /root/.nix-channels
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
