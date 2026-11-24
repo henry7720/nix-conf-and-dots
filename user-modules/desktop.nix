@@ -131,16 +131,6 @@ in
     };
 
   home.file = {
-    #".bashrc".source = ../dotfiles/bash/.bashrc;
-    #".bash_profile".source = ../dotfiles/bash/.bash_profile;
-    #".gitconfig".source = ../dotfiles/git/.gitconfig;
-    #".local/bin/update-all".source = symlink "${scriptsDir}/update-system-all.sh";
-    #".local/bin/proc_zh".source = symlink "${scriptsDir}/process_zhongwen_export.py";
-    #".local/bin/restart_shell".source = symlink "${scriptsDir}/restart-plasmashell.sh";
-    #".local/bin/backup-remote".source = symlink "${scriptsDir}/backup-remote.sh";
-    #".local/bin/build-os".source = symlink "${scriptsDir}/rebuild-system-bootc.sh";
-    #".local/bin/check-reg".source = symlink "${scriptsDir}/check-bootc-base-image-update.sh";
-
     "Documents/Personal/FAMILY MEDIA ARCHIVE".source =
       symlink "/run/media/henry/Diff_Backups/FAMILY MEDIA ARCHIVE";
   };

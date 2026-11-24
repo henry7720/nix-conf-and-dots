@@ -47,7 +47,7 @@
     #default old version
     #kernelPackages = pkgs.linuxPackages;
 
-    # LOAD GPU DRIVER for encryption prompt
+    # LOAD GPU DRIVER for encryption prompt to external monitors
     initrd = {
       kernelModules = [ "amdgpu" ];
 
@@ -146,7 +146,7 @@
       "zh_CN.UTF-8/UTF-8"
     ];
 
-    # not necessary
+    # not necessary, but use to override if ever desired
     # extraLocaleSettings = {
     #   LC_ADDRESS = "en_US.UTF-8";
     #   LC_IDENTIFICATION = "en_US.UTF-8";

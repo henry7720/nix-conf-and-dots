@@ -6,7 +6,7 @@
       enable = true;
       font = {
         name = "JetBrainsMonoNL Nerd Font";
-        size = 12.0;
+        size = 14.0;
       };
 
       settings = {
@@ -26,8 +26,6 @@
       enable = true;
 
       shellAliases = {
-        # vi = "nvim";
-        # vim = "nvim";
         vi = "hx";
         vim = "hx";
 
@@ -52,14 +50,6 @@
     helix = {
       enable = true;
       defaultEditor = true;
-      # extraPackages = with pkgs; [
-      #  rust-language-server
-      #  jdt-language-server
-      #  ccls
-      #  bash-language-server
-      # typescript-language-server
-      #  nixfmt
-      # ];
     };
 
     obs-studio.enable = true;
@@ -132,7 +122,6 @@
     };
 
     distrobox.enable = true;
-    micro.enable = true;
     antigravity-cli.enable = true;
   };
 }

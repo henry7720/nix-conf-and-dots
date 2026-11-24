@@ -62,7 +62,6 @@ in
     platformTheme.name = "qtct";
     qt6ctSettings = {
       Appearance = {
-        #color_scheme_path = "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
         color_scheme_path = "${homeDir}/.config/qt6ct/style-colors.conf";
         custom_palette = true;
         icon_theme = "Papirus-Dark";
