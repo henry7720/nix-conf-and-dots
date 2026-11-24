@@ -26,7 +26,7 @@
       nixpkgs,
       lanzaboote,
       home-manager,
-      nix-flatpak,
+      #nix-flatpak,
       ...
     }@inputs:
     {
