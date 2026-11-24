@@ -20,29 +20,38 @@
     };
   };
 
-  outputs = { self, nixpkgs, lanzaboote, home-manager, nix-flatpak, ... }@inputs: {
-    nixosConfigurations = {
-      # Matches networking.hostName = "nixos" in configuration.nix
-      nixos-yoga = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
+  outputs =
+    {
+      self,
+      nixpkgs,
+      lanzaboote,
+      home-manager,
+      nix-flatpak,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        # Matches networking.hostName = "nixos" in configuration.nix
+        nixos-yoga = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
 
-	        lanzaboote.nixosModules.lanzaboote
+            lanzaboote.nixosModules.lanzaboote
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              backupFileExtension = "backup";
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.henry = ./home.nix;
-              sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
-            };
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                backupFileExtension = "backup";
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
+                users.henry = ./home.nix;
+                sharedModules = [ nix-flatpak.homeManagerModules.nix-flatpak ];
+              };
+            }
+          ];
+        };
       };
     };
-  };
 }

@@ -2,17 +2,23 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader, but override with lanzaboote.
   boot = {
-    
+
     lanzaboote = {
       enable = true;
       pkiBundle = "/var/lib/sbctl";
@@ -31,7 +37,7 @@
         efiSysMountPoint = "/boot";
       };
     };
-    
+
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
 
@@ -48,7 +54,7 @@
       # needed for fstrim set to correct luks device in future
       luks.devices."luks-41e666ac-09ec-4832-882d-24a07775230a".allowDiscards = true;
     };
-    
+
     kernelModules = [
       # ensure we can set conservation mode on every boot
       "ideapad_laptop"
@@ -69,9 +75,18 @@
   # retroactively run: sudo btrfs filesystem defragment -r -v -czstd /home
   # works on other subvolumes but you shouldn't need it anywhere else
   fileSystems = {
-    "/".options = [ "compress=zstd:1" "noatime" ];
-    "/home".options = [ "compress=zstd:1" "noatime" ];
-    "/nix".options = [ "compress=zstd:1" "noatime" ];
+    "/".options = [
+      "compress=zstd:1"
+      "noatime"
+    ];
+    "/home".options = [
+      "compress=zstd:1"
+      "noatime"
+    ];
+    "/nix".options = [
+      "compress=zstd:1"
+      "noatime"
+    ];
   };
 
   console = {
@@ -90,18 +105,21 @@
   nix = {
     channel.enable = false; # optional
     registry.nixpkgs.flake = inputs.nixpkgs;
-    
+
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
-    
+
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    
+
   };
   # Enable networking
   networking = {
@@ -127,7 +145,7 @@
       "zh_TW.UTF-8/UTF-8"
       "zh_CN.UTF-8/UTF-8"
     ];
-    
+
     # not necessary
     # extraLocaleSettings = {
     #   LC_ADDRESS = "en_US.UTF-8";
@@ -140,7 +158,7 @@
     #   LC_TELEPHONE = "en_US.UTF-8";
     #   LC_TIME = "en_US.UTF-8";
     # };
-  
+
     inputMethod = {
       enable = true;
       type = "fcitx5";
@@ -154,7 +172,7 @@
       };
     };
   };
-  
+
   fonts.packages = with pkgs; [
     noto-fonts
     nerd-fonts.jetbrains-mono
@@ -169,17 +187,21 @@
   users.users."henry" = {
     isNormalUser = true;
     description = "Henry";
-    extraGroups = [ "networkmanager" "wheel" "cdrom" "libvirtd" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "cdrom"
+      "libvirtd"
+    ];
     # packages = with pkgs; [];
   };
-
 
   programs = {
     niri = {
       enable = true;
       useNautilus = false;
     };
-        
+
     thunar = {
       enable = true;
       plugins = with pkgs; [
@@ -208,15 +230,15 @@
       dockerCompat = true;
     };
   };
-  
+
   security.rtkit.enable = true;
-    #pam.services.swaylock = {};
+  #pam.services.swaylock = {};
 
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
   };
-  
+
   systemd = {
     services = {
       # Custom service to force battery to STAY NOT CHARGING PAST 80%
@@ -227,7 +249,7 @@
           Type = "oneshot";
           RemainAfterExit = true;
         };
-	# In previous revisions, the wildcard * was VPC2004:00 (identified via research), but this may not be stable on kernel updates, so we write * to be safe
+        # In previous revisions, the wildcard * was VPC2004:00 (identified via research), but this may not be stable on kernel updates, so we write * to be safe
         script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode";
       };
 
@@ -237,7 +259,7 @@
 
     oomd.enable = true;
   };
-  
+
   # setup zram, defaults 50% memory and zstd are good
   zramSwap.enable = true;
 
@@ -276,16 +298,16 @@
     gvfs.enable = true;
 
     udisks2.enable = true;
-    
+
     flatpak.enable = true;
-    
+
     upower.enable = true;
-    
+
     tailscale.enable = true;
-    
+
     ipp-usb.enable = true;
     #sudo firintd-enroll henry
-    fprintd.enable = true;  
+    fprintd.enable = true;
 
     avahi = {
       enable = true;
@@ -299,7 +321,7 @@
       ];
       enable = true;
     };
-    
+
     # Configure keyboard map in X11
     xserver.xkb = {
       layout = "us";
@@ -324,10 +346,10 @@
       fileSystems = [ "/" ];
     };
   };
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  
+
   environment = {
     systemPackages = with pkgs; [
       brightnessctl

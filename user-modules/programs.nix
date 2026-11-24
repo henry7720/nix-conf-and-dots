@@ -29,14 +29,14 @@
         # vi = "nvim";
         # vim = "nvim";
         vi = "hx";
-	vim = "hx";
+        vim = "hx";
 
         # low-risk changes only
         up-live = "nixos-rebuild switch --flake ~/nixos#nixos-yoga --sudo";
 
         # Update flakes for actual updates
         # Test build to see if it builds!
-        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild build --no-build-output --flake .#nixos-yoga)";
+        up-flake = "(cd ~/nixos && nix flake update && nixos-rebuild boot --flake .#nixos-yoga)";
 
         # Higher risk changes: install as the next boot entry without touching the running system
         # if it doesn't boot you lose nothing
@@ -66,12 +66,15 @@
     joplin-desktop.enable = true;
 
     yt-dlp.enable = true;
-    
+
     gh = {
       enable = true;
       gitCredentialHelper = {
         enable = true;
-        hosts = [ "https://github.com" "https://gist.github.com" ];
+        hosts = [
+          "https://github.com"
+          "https://gist.github.com"
+        ];
       };
     };
 
@@ -101,7 +104,7 @@
     };
 
     vscodium.enable = true;
-    
+
     # enable bash integration
     direnv = {
       enable = true;
@@ -110,5 +113,26 @@
     };
 
     anki.enable = true;
+
+    chromium = {
+      enable = true;
+      package = pkgs.ungoogled-chromium;
+    };
+
+    swaylock.enable = true;
+    wiremix.enable = true;
+    qalculate = {
+      enable = true;
+      package = pkgs.qalculate-qt;
+    };
+
+    libreoffice = {
+      enable = true;
+      package = pkgs.libreoffice-qt;
+    };
+
+    distrobox.enable = true;
+    micro.enable = true;
+    antigravity-cli.enable = true;
   };
 }

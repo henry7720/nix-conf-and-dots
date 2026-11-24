@@ -12,14 +12,14 @@ in
     gtk.enable = true;
   };
 
-#   fonts.fontconfig = {
-#     enable = true;
-#     defaultFonts = {
-#       sansSerif = [ "Noto Sans" "Noto Sans CJK TC" "Noto Sans CJK SC" "Jigmo" ];
-#       serif = [ "Noto Serif" "Noto Serif CJK TC" "Noto Serif CJK SC" "Jigmo" ];
-#       monospace = [ "JetBrainsMonoNL Nerd Font" "Noto Sans Mono CJK TC" "Jigmo" ];
-#     };
-#   };
+  #   fonts.fontconfig = {
+  #     enable = true;
+  #     defaultFonts = {
+  #       sansSerif = [ "Noto Sans" "Noto Sans CJK TC" "Noto Sans CJK SC" "Jigmo" ];
+  #       serif = [ "Noto Serif" "Noto Serif CJK TC" "Noto Serif CJK SC" "Jigmo" ];
+  #       monospace = [ "JetBrainsMonoNL Nerd Font" "Noto Sans Mono CJK TC" "Jigmo" ];
+  #     };
+  #   };
 
   gtk = {
     enable = true;
