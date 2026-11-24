@@ -39,13 +39,13 @@
     };
 
     # Use latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
 
     # keep LTS fallback if i ever want both
     # specialisation.lts-kernel.configuration.boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
 
     #default old version
-    #kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages;
 
     # LOAD GPU DRIVER for encryption prompt to external monitors
     initrd = {
@@ -249,8 +249,8 @@
           Type = "oneshot";
           RemainAfterExit = true;
         };
-        # In previous revisions, the wildcard * was VPC2004:00 (identified via research), but this may not be stable on kernel updates, so we write * to be safe
-        script = "echo 1 > /sys/bus/platform/drivers/ideapad_acpi/*/conservation_mode";
+        # Force 80% charge limit
+        script = "echo Long_Life > /sys/class/power_supply/BAT0/charge_types";
       };
 
       # annoying wait
