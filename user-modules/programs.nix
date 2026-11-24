@@ -100,6 +100,8 @@
       };
     };
 
+    vscodium.enable = true;
+    
     # enable bash integration
     direnv = {
       enable = true;
