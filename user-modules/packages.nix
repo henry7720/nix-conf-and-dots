@@ -95,6 +95,7 @@
     #helix
     #neovim
     fastfetch
+    nixfmt
 
     # Compilers & Toolchains
     #gcc
